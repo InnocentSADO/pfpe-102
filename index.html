@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PFPE – Groupe 102 | SITO Gatineau</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- Swiper.js CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+
+  <style>
+    /* Réinitialisation */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      color: #1a3b5d;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007bff;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #0056b3;
+    }
+
+    /* Conteneur principal */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* En-tête / Bannière animée */
+    header {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                  url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGZiNjRiZGJmNzJhM2U2ZjRkZmJmYjY0ZjI0Y2Y4M2M4NzY2ZjY4MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKsQ8UOEYDxuCKo/giphy.gif') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-content {
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    .hero-content p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #ffc107;
+      color: #1a3b5d;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: #ffc107;
+      transform: translateY(-3px);
+      border-color: #ffc107;
+    }
+
+    /* Sections générales */
+    section {
+      padding: 80px 0;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    section h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #ffc107;
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Galerie Photos */
+    #galerie {
+      background: #fff;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 250px;
+      position: relative;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px;
+      font-size: 0.9rem;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+    }
+
+    /* Remerciements */
+    #remerciements {
+      background: #f1f5f9;
+    }
+
+    .partners {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .partner {
+      text-align: center;
+      flex: 1 1 200px;
+      max-width: 200px;
+    }
+
+    .partner img {
+      max-width: 100%;
+      height: auto;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+      border-radius: 8px;
+    }
+
+    .partner img:hover {
+      opacity: 1;
+    }
+
+    .partner p {
+      margin-top: 10px;
+      font-weight: 600;
+      color: #1a3b5d;
+    }
+
+    /* Témoignages */
+    #temoignages {
+      background: #1a3b5d;
+      color: white;
+    }
+
+    #temoignages h2 {
+      color: white;
+    }
+
+    #temoignages h2::after {
+      background: #ffc107;
+    }
+
+    .swiper {
+      padding: 20px 0;
+    }
+
+    .swiper-slide {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      color: #333;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    .testimonial-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 15px;
+      border: 3px solid #ffc107;
+    }
+
+    .swiper-slide p {
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+
+    .swiper-slide strong {
+      color: #1a3b5d;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .testimonial-name {
+      font-weight: 600;
+      color: #1a3b5d;
+    }
+
+    .swiper-pagination-bullet {
+      background: #ffc107;
+    }
+
+    .swiper-button-next, .swiper-button-prev {
+      color: #ffc107 !important;
+    }
+
+    /* Formation */
+    #formation {
+      background: #fff;
+    }
+
+    .moments {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .moment {
+      flex: 1 1 350px;
+      max-width: 400px;
+      text-align: center;
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .moment:hover {
+      transform: translateY(-10px);
+    }
+
+    .moment h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: #1a3b5d;
+    }
+
+    .moment p {
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .mini-swiper {
+      height: 200px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .mini-swiper img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Navigation fixe */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(26, 59, 93, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: background 0.4s ease;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+    }
+
+    nav ul li a {
+      color: white;
+      padding: 20px 25px;
+      display: block;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffc107;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      nav ul {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav ul li a {
+        padding: 15px;
+      }
+
+      .moments {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .moment {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#remerciements">Remerciements</a></li>
+      <li><a href="#temoignages">Témoignages</a></li>
+      <li><a href="#formation">Formation</a></li>
+    </ul>
+  </nav>
+
+  <!-- Bannière d'accueil -->
+  <header id="accueil">
+    <div class="container hero-content">
+      <h1>PFPE – Groupe 102</h1>
+      <p>Formation et sortie officielle du Programme de formation en promotion de l'emploi, SITO Gatineau, Québec</p>
+      <a href="#galerie" class="btn">Découvrir les moments</a>
+    </div>
+  </header>
+
+  <!-- Galerie Photos -->
+  <section id="galerie">
+    <div class="container">
+      <h2>Nos Moments Inoubliables</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://source.unsplash.com/random/600x600/?team,workshop" alt="Groupe en atelier collaboratif">
+          <div class="gallery-caption">Atelier de travail d’équipe – échange et collaboration</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://source.unsplash.com/random/600x600/?classroom,learning" alt="Apprentissage en classe">
+          <div class="gallery-caption">Séance de formation en communication professionnelle</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://source.unsplash.com/random/600x600/?graduation,celebration" alt="Cérémonie de remise">
+          <div class="gallery-caption">Remise symbolique des attestations de participation</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://source.unsplash.com/random/600x600/?group,smile" alt="Groupe souriant">
+          <div class="gallery-caption">Sourires et fierté après la réussite du parcours</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://source.unsplash.com/random/600x600/?training,mentor" alt="Coach et participant">
+          <div class="gallery-caption">Accompagnement individuel avec un conseiller</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://source.unsplash.com/random/600x600/?diploma,certificate" alt="Diplôme">
+          <div class="gallery-caption">Moment solennel de reconnaissance</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://source.unsplash.com/random/600x600/?outdoor,team" alt="Sortie de groupe">
+          <div class="gallery-caption">Sortie de cohésion en plein air à Gatineau</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://source.unsplash.com/random/600x600/?discussion,meeting" alt="Discussion animée">
+          <div class="gallery-caption">Échanges dynamiques lors d’un atelier de groupe</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://source.unsplash.com/random/600x600/?presentation,public" alt="Présentation">
+          <div class="gallery-caption">Présentation orale devant les pairs et formateurs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Remerciements -->
+  <section id="remerciements">
+    <div class="container">
+      <h2>Nos Partenaires & Financeurs</h2>
+      <p>Nous tenons à remercier chaleureusement les organismes et employeurs qui ont rendu cette formation possible.</p>
+      <div class="partners">
+        <div class="partner">
+          <img src="https://via.placeholder.com/200x100?text=Service+Québec" alt="Logo Service Québec">
+          <p>Service Québec</p>
+        </div>
+        <div class="partner">
+          <img src="https://via.placeholder.com/200x100?text=CSSPO" alt="Logo CSSPO">
+          <p>CSSPO</p>
+        </div>
+        <div class="partner">
+          <img src="https://via.placeholder.com/200x100?text=SITO" alt="Logo SITO">
+          <p>SITO</p>
+        </div>
+        <div class="partner">
+          <img src="https://via.placeholder.com/200x100?text=Employeurs" alt="Logos des employeurs partenaires">
+          <p>Nos Employeurs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Témoignages -->
+  <section id="temoignages">
+    <div class="container">
+      <h2>Témoignages du Groupe 102</h2>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Marie Dubois" class="testimonial-img">
+            <p>« Cette formation a changé ma vie. Je me sens prêt à affronter le marché du travail avec confiance. »</p>
+            <div class="testimonial-name">Marie Dubois</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jean Tremblay" class="testimonial-img">
+            <p>« Un programme complet, humain et professionnel. Merci au SITO pour cette opportunité. »</p>
+            <div class="testimonial-name">Jean Tremblay</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sophie Lefebvre" class="testimonial-img">
+            <p>« J’ai appris à croire en moi. Chaque atelier m’a aidé à mieux me connaître. »</p>
+            <div class="testimonial-name">Sophie Lefebvre</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Ahmed Khan" class="testimonial-img">
+            <p>« L’équipe pédagogique était exceptionnelle. Toujours à l’écoute et motivante. »</p>
+            <div class="testimonial-name">Ahmed Khan</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Camille Roy" class="testimonial-img">
+            <p>« Une expérience intense mais enrichissante. Je recommande à 100%. »</p>
+            <div class="testimonial-name">Camille Roy</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="David Gagnon" class="testimonial-img">
+            <p>« J’ai trouvé un emploi grâce à ce programme. Un grand merci à tous. »</p>
+            <div class="testimonial-name">David Gagnon</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/women/39.jpg" alt="Émilie Caron" class="testimonial-img">
+            <p>« Le soutien personnalisé a fait toute la différence. »</p>
+            <div class="testimonial-name">Émilie Caron</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/men/29.jpg" alt="Lucas Martin" class="testimonial-img">
+            <p>« Une belle cohésion de groupe. On s’est soutenus du début à la fin. »</p>
+            <div class="testimonial-name">Lucas Martin</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Fatima Ndiaye" class="testimonial-img">
+            <p>« Je suis fier d’être diplômé du PFPE Groupe 102. »</p>
+            <div class="testimonial-name">Fatima Ndiaye</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Patrick Leblanc" class="testimonial-img">
+            <p>« Des outils concrets pour réussir. Je me sens armé pour l’avenir. »</p>
+            <div class="testimonial-name">Patrick Leblanc</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/women/51.jpg" alt="Nadia Bouchard" class="testimonial-img">
+            <p>« Une belle opportunité de rebondir après une période difficile. »</p>
+            <div class="testimonial-name">Nadia Bouchard</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Samir Ahmed" class="testimonial-img">
+            <p>« L’accompagnement a été humain et professionnel. Merci. »</p>
+            <div class="testimonial-name">Samir Ahmed</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Chloé Pelletier" class="testimonial-img">
+            <p>« J’ai retrouvé confiance en mes compétences. »</p>
+            <div class="testimonial-name">Chloé Pelletier</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/men/48.jpg" alt="Yvan Dubuc" class="testimonial-img">
+            <p>« Ce programme m’a ouvert des portes que je croyais fermées. »</p>
+            <div class="testimonial-name">Yvan Dubuc</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Lina Tran" class="testimonial-img">
+            <p>« Une formation bien structurée, avec des intervenants passionnés. »</p>
+            <div class="testimonial-name">Lina Tran</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Maxime Côté" class="testimonial-img">
+            <p>« J’ai appris à valoriser mon parcours. Merci pour cette belle aventure. »</p>
+            <div class="testimonial-name">Maxime Côté</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Amina Diallo" class="testimonial-img">
+            <p>« Un programme qui transforme. Je suis reconnaissant. »</p>
+            <div class="testimonial-name">Amina Diallo</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/men/40.jpg" alt="Olivier Gauthier" class="testimonial-img">
+            <p>« Une expérience collective puissante. Je garderai ces souvenirs précieusement. »</p>
+            <div class="testimonial-name">Olivier Gauthier</div>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://randomuser.me/api/portraits/women/61.jpg" alt="Manon Fortin" class="testimonial-img">
+            <p>« Merci à tous ceux qui ont cru en nous. Nous sommes prêts! »</p>
+            <div class="testimonial-name">Manon Fortin</div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formation -->
+  <section id="formation">
+    <div class="container">
+      <h2>Formation & Moments Clés</h2>
+      <div class="moments">
+        <!-- Ateliers pratiques -->
+        <div class="moment">
+          <h3>Ateliers pratiques</h3>
+          <p>Simulation d’entrevues, rédaction de CV, développement de compétences.</p>
+          <div class="mini-swiper">
+            <div class="swiper mySwiper1">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="https://source.unsplash.com/random/600x400/?workshop,interview" alt="Simulation d'entrevue"></div>
+                <div class="swiper-slide"><img src="https://source.unsplash.com/random/600x400/?resume,job" alt="Rédaction de CV"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coaching -->
+        <div class="moment">
+          <h3>Accompagnement personnalisé</h3>
+          <p>Suivi individuel avec des conseillers expérimentés.</p>
+          <div class="mini-swiper">
+            <div class="swiper mySwiper2">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="https://source.unsplash.com/random/600x400/?coach,meeting" alt="Séance de coaching"></div>
+                <div class="swiper-slide"><img src="https://source.unsplash.com/random/600x400/?mentor,advice" alt="Conseil personnalisé"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Réseau -->
+        <div class="moment">
+          <h3>Sortie de groupe</h3>
+          <p>Bâtir des liens solides entre les participants.</p>
+          <div class="mini-swiper">
+            <div class="swiper mySwiper3">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="https://source.unsplash.com/random/600x400/?networking,outdoor" alt="Sortie en plein air"></div>
+                <div class="swiper-slide"><img src="https://source.unsplash.com/random/600x400/?team,bonding" alt="Renforcement d'équipe"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pied de page -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <p>Un grand merci à chaque membre du Groupe 102 pour leur engagement, leur courage et leur détermination.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="credits">
+        <p>© 2025 PFPE Groupe 102 | Conçu avec ❤️ par le SITO Gatineau</p>
+        <p>Contact : <a href="mailto:info@sito-gatineau.qc.ca" style="color:#aaa;">info@sito-gatineau.qc.ca</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Swiper.js JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- JavaScript personnalisé -->
+  <script>
+    // Carrousel principal
+    new Swiper('.swiper', {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+        },
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        }
+      }
+    });
+
+    // Carrousels imbriqués
+    new Swiper('.mySwiper1', {
+      loop: true,
+      autoplay: { delay: 3000 },
+      pagination: { el: '.mySwiper1 .swiper-pagination', clickable: true },
+      navigation: false,
+    });
+
+    new Swiper('.mySwiper2', {
+      loop: true,
+      autoplay: { delay: 3500 },
+      pagination: { el: '.mySwiper2 .swiper-pagination', clickable: true },
+      navigation: false,
+    });
+
+    new Swiper('.mySwiper3', {
+      loop: true,
+      autoplay: { delay: 4000 },
+      pagination: { el: '.mySwiper3 .swiper-pagination', clickable: true },
+      navigation: false,
+    });
+
+    // Navigation fluide
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Effet de transparence sur la nav
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 100) {
+        nav.style.backgroundColor = '#1a3b5d';
+      } else {
+        nav.style.backgroundColor = 'rgba(26, 59, 93, 0.95)';
+      }
+    });
+  </script>
+
+</body>
+</html>
