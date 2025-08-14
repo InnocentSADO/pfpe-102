@@ -2,17 +2,11 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PFPE – Groupe 102 | SITO Gatineau</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
-
-  <!-- Swiper.js CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Merci — PFPE SITO, groupe 102</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* Réinitialisation */
+    /* Reset & Base */
     * {
       margin: 0;
       padding: 0;
@@ -20,222 +14,240 @@
     }
 
     body {
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
       line-height: 1.6;
       color: #333;
       background-color: #f8f9fa;
     }
 
-    h1, h2, h3, h4 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      color: #1a3b5d;
+    img {
+      max-width: 100%;
+      height: auto;
+      loading="lazy";
     }
 
     a {
       text-decoration: none;
-      color: #007bff;
-      transition: color 0.3s ease;
+      color: #4169E1;
     }
 
-    a:hover {
-      color: #0056b3;
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
     }
 
-    /* Conteneur principal */
+    button:focus, a:focus {
+      outline: 3px solid #4169E180;
+    }
+
+    /* Layout */
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 1rem;
+      text-align: center;
     }
 
-    /* En-tête / Bannière animée */
-    header {
-      height: 100vh;
-      background: url('/img/familyy.gif') no-repeat center center;
-      background-size: cover;
-      
+    /* Hero */
+    .hero {
+      margin-top: 0;
+      padding: 3rem 1rem;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      height: 80vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      color: white;
     }
 
-    .hero-content {
-      animation: fadeInUp 2s ease;
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('/img/family.gif');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0.7;
+      z-index: -1;
     }
 
-    .hero-content h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      color: white;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(65, 105, 225, 0.9) 0%, rgba(40, 60, 130, 0.8) 100%);
+      z-index: -1;
     }
 
-    .hero-content p {
-      font-size: 1.5rem;
-      max-width: 800px;
-      margin: 0 auto 30px;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      z-index: 1;
     }
 
     .btn {
       display: inline-block;
-      padding: 12px 30px;
-      background: #ffc107;
-      color: #1a3b5d;
-      border-radius: 30px;
+      background: white;
+      color: #4169E1;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
       font-weight: 600;
       transition: all 0.3s ease;
       border: 2px solid transparent;
+      z-index: 1;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .btn:hover {
       background: transparent;
-      color: #ffc107;
-      transform: translateY(-3px);
-      border-color: #ffc107;
+      color: white;
+      border-color: white;
+      transform: translateY(-2px);
     }
 
-    /* Sections générales */
+    /* Section Base */
     section {
-      padding: 80px 0;
+      padding: 3rem 1rem;
     }
 
     section h2 {
       text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 50px;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: #4169E1;
+    }
+
+    /* Slideshow - Moments Forts */
+    .slideshow-container {
       position: relative;
-    }
-
-    section h2::after {
-      content: '';
-      display: block;
-      width: 80px;
-      height: 4px;
-      background: #ffc107;
-      margin: 15px auto 0;
-      border-radius: 2px;
-    }
-
-    /* Galerie Photos */
-    #galerie {
-      background: #fff;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 15px;
-    }
-
-    .gallery-item {
+      max-width: 100%;
+      margin: 0 auto;
       overflow: hidden;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      height: 250px;
-      position: relative;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      height: 65vh;
     }
 
-    .gallery-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 25px rgba(0,0,0,0.15);
-    }
-
-    .gallery-item img {
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
+      opacity: 0;
+      transition: opacity 1s ease;
+      background-size: cover;
+      background-position: center;
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.1);
+    .slide.active {
+      opacity: 1;
     }
 
-    .gallery-caption {
+    .slide-caption {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0,0,0,0.6);
       color: white;
-      padding: 10px;
-      font-size: 0.9rem;
+      padding: 1rem;
+      font-size: 1.1rem;
       text-align: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
     }
 
-    .gallery-item:hover .gallery-caption {
-      opacity: 1;
-    }
-
-    /* Remerciements */
-    #remerciements {
-      background: #f1f5f9;
-    }
-
-    .partners {
+    .slideshow-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
       display: flex;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .control-btn {
+      background: rgba(255,255,255,0.3);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
       justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
+      align-items: center;
+      font-size: 1.5rem;
+      margin: 0 1rem;
+      backdrop-filter: blur(5px);
     }
 
-    .partner {
-      text-align: center;
-      flex: 1 1 200px;
-      max-width: 200px;
+    .control-btn:hover {
+      background: rgba(255,255,255,0.5);
     }
 
-    .partner img {
-      max-width: 100%;
-      height: auto;
-      opacity: 0.8;
-      transition: opacity 0.3s ease;
-      border-radius: 8px;
+    .dots-container {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
     }
 
-    .partner img:hover {
-      opacity: 1;
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
     }
 
-    .partner p {
-      margin-top: 10px;
-      font-weight: 600;
-      color: #1a3b5d;
+    .dot.active {
+      background: #4169E1;
     }
 
     /* Témoignages */
-    #temoignages {
-      background: #1a3b5d;
-      color: white;
+    .testimonials {
+      background: #f0f4f8;
     }
 
-    #temoignages h2 {
-      color: white;
+    .testimonial-slider {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      padding: 1rem 0;
     }
 
-    #temoignages h2::after {
-      background: #ffc107;
-    }
-
-    .swiper {
-      padding: 20px 0;
-    }
-
-    .swiper-slide {
+    .testimonial-item {
+      display: none;
+      text-align: center;
+      padding: 1.5rem;
       background: white;
       border-radius: 12px;
-      padding: 30px;
-      color: #333;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .testimonial-item.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
     }
 
     .testimonial-img {
@@ -243,510 +255,606 @@
       height: 80px;
       border-radius: 50%;
       object-fit: cover;
-      margin: 0 auto 15px;
-      border: 3px solid #ffc107;
-    }
-
-    .swiper-slide p {
-      font-style: italic;
-      margin-bottom: 15px;
-    }
-
-    .swiper-slide strong {
-      color: #1a3b5d;
-      display: block;
-      margin-top: 10px;
+      margin: 0 auto 1rem;
+      border: 3px solid #4169E1;
     }
 
     .testimonial-name {
       font-weight: 600;
-      color: #1a3b5d;
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 0.5rem;
     }
 
-    .swiper-pagination-bullet {
-      background: #ffc107;
+    .country-flag {
+      width: 20px;
+      height: 15px;
+      margin-right: 0.5rem;
+      vertical-align: middle;
     }
 
-    .swiper-button-next, .swiper-button-prev {
-      color: #ffc107 !important;
+    .testimonial-text {
+      color: #555;
+      line-height: 1.7;
+      margin: 1rem 0;
     }
 
-    /* Formation */
-    #formation {
-      background: #fff;
+    .testimonial-modal-btn {
+      color: #4169E1;
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 0.95rem;
     }
 
-    .moments {
+    /* Partners */
+    .partners {
+      text-align: center;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .partner-logo {
+      height: 60px;
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+
+    .partner-logo:hover {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    /* Participants */
+    .participants {
+      background: #4169E1;
+      color: white;
+    }
+
+    .participants-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
       justify-content: center;
-      margin-top: 40px;
+      gap: 1rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .moment {
-      flex: 1 1 350px;
-      max-width: 400px;
+    .participant-country {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .participant-flag {
+      width: 24px;
+      height: 16px;
+    }
+
+    .total-count {
       text-align: center;
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      opacity: 0.9;
     }
 
-    .moment:hover {
-      transform: translateY(-10px);
+    /* Footer */
+    footer {
+      background: #1a2b4c;
+      color: #ddd;
+      padding: 2rem 1rem;
+      text-align: center;
     }
 
-    .moment h3 {
-      font-size: 1.4rem;
-      margin-bottom: 15px;
-      color: #1a3b5d;
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .moment p {
-      margin-bottom: 20px;
-      font-size: 0.95rem;
-      color: #555;
+    .footer-links {
+      margin: 1rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
 
-    .mini-swiper {
-      height: 200px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .footer-links a {
+      color: #ddd;
     }
 
-    .mini-swiper img {
+    .footer-links a:hover {
+      color: #4169E1;
+    }
+
+    .credits {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      opacity: 0.8;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 200px;
-      object-fit: cover;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: white;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      color: #999;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: #333;
     }
 
     /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Navigation fixe */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(26, 59, 93, 0.95);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      transition: background 0.4s ease;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      justify-content: center;
-    }
-
-    nav ul li a {
-      color: white;
-      padding: 20px 25px;
-      display: block;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    nav ul li a:hover {
-      color: #ffc107;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2.5rem;
+      .hero h1 {
+        font-size: 2rem;
       }
 
-      .hero-content p {
-        font-size: 1.2rem;
+      .hero p {
+        font-size: 1.1rem;
       }
 
       section {
-        padding: 60px 0;
+        padding: 2rem 1rem;
       }
 
-      nav ul {
-        flex-direction: column;
-        text-align: center;
+      .hero {
+        height: 70vh;
       }
 
-      nav ul li a {
-        padding: 15px;
+      .slideshow-container {
+        height: 60vh;
       }
 
-      .moments {
-        flex-direction: column;
-        align-items: center;
+      .control-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
       }
 
-      .moment {
-        max-width: 100%;
+      .testimonial-item {
+        padding: 1rem;
+      }
+
+      .testimonial-img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .testimonial-name {
+        font-size: 1rem;
+      }
+
+      .testimonial-text {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero {
+        height: 75vh;
+      }
+
+      .slideshow-container {
+        height: 70vh;
+      }
+
+      .dots-container {
+        margin-top: 0.5rem;
+      }
+
+      .dot {
+        width: 8px;
+        height: 8px;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#accueil">Accueil</a></li>
-      <li><a href="#galerie">Galerie</a></li>
-      <li><a href="#remerciements">Remerciements</a></li>
-      <li><a href="#temoignages">Témoignages</a></li>
-      <li><a href="#formation">Formation</a></li>
-    </ul>
-  </nav>
-
-  <!-- Bannière d'accueil -->
-  <header id="accueil">
-    <div class="container hero-content">
-      <h1>PFPE – Groupe 102</h1>
-      <p>Formation et sortie officielle du Programme de formation en promotion de l'emploi, SITO Gatineau, Québec</p>
-      <a href="#galerie" class="btn">Découvrir les moments</a>
-    </div>
-  </header>
-
-  <!-- Galerie Photos -->
-  <section id="galerie">
+  <!-- Hero -->
+  <section class="hero">
     <div class="container">
-      <h2>Nos Moments Inoubliables</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="https://source.unsplash.com/random/600x600/?team,workshop" alt="Groupe en atelier collaboratif">
-          <div class="gallery-caption">Atelier de travail d’équipe – échange et collaboration</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://source.unsplash.com/random/600x600/?classroom,learning" alt="Apprentissage en classe">
-          <div class="gallery-caption">Séance de formation en communication professionnelle</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://source.unsplash.com/random/600x600/?graduation,celebration" alt="Cérémonie de remise">
-          <div class="gallery-caption">Remise symbolique des attestations de participation</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://source.unsplash.com/random/600x600/?group,smile" alt="Groupe souriant">
-          <div class="gallery-caption">Sourires et fierté après la réussite du parcours</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://source.unsplash.com/random/600x600/?training,mentor" alt="Coach et participant">
-          <div class="gallery-caption">Accompagnement individuel avec un conseiller</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://source.unsplash.com/random/600x600/?diploma,certificate" alt="Diplôme">
-          <div class="gallery-caption">Moment solennel de reconnaissance</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://source.unsplash.com/random/600x600/?outdoor,team" alt="Sortie de groupe">
-          <div class="gallery-caption">Sortie de cohésion en plein air à Gatineau</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://source.unsplash.com/random/600x600/?discussion,meeting" alt="Discussion animée">
-          <div class="gallery-caption">Échanges dynamiques lors d’un atelier de groupe</div>
-        </div>
-        <div class="gallery-item">
-          <img src="https://source.unsplash.com/random/600x600/?presentation,public" alt="Présentation">
-          <div class="gallery-caption">Présentation orale devant les pairs et formateurs</div>
-        </div>
-      </div>
+      <br>
+      
+      <p>Les immigrants residents de l'Outaouais, participants du programe preparatoire à l'emploi (PFPE) groupe 102 disent tous</p>
+      <h1>Merci à toute l'équipe du SITO</h1> 
+      <a href="#moments" class="btn">Voir les moments forts</a>
     </div>
   </section>
 
-  <!-- Remerciements -->
-  <section id="remerciements">
+  <!-- Moments Forts -->
+  <section id="moments">
     <div class="container">
-      <h2>Nos Partenaires & Financeurs</h2>
-      <p>Nous tenons à remercier chaleureusement les organismes et employeurs qui ont rendu cette formation possible.</p>
-      <div class="partners">
-        <div class="partner">
-          <img src="https://via.placeholder.com/200x100?text=Service+Québec" alt="Logo Service Québec">
-          <p>Service Québec</p>
-        </div>
-        <div class="partner">
-          <img src="https://via.placeholder.com/200x100?text=CSSPO" alt="Logo CSSPO">
-          <p>CSSPO</p>
-        </div>
-        <div class="partner">
-          <img src="https://via.placeholder.com/200x100?text=SITO" alt="Logo SITO">
-          <p>SITO</p>
-        </div>
-        <div class="partner">
-          <img src="https://via.placeholder.com/200x100?text=Employeurs" alt="Logos des employeurs partenaires">
-          <p>Nos Employeurs</p>
-        </div>
+      <h2>Moments forts</h2>
+      <div class="slideshow-container" id="slideshow">
+        <!-- Slides will be inserted by JS -->
+         <img src="img/1.PNG" alt="Photo de Famille - PFPE groupe 102">
       </div>
+      <div class="dots-container" id="dots"></div>
     </div>
   </section>
 
   <!-- Témoignages -->
-  <section id="temoignages">
+  <section class="testimonials">
     <div class="container">
-      <h2>Témoignages du Groupe 102</h2>
-      <div class="swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Marie Dubois" class="testimonial-img">
-            <p>« Cette formation a changé ma vie. Je me sens prêt à affronter le marché du travail avec confiance. »</p>
-            <div class="testimonial-name">Marie Dubois</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Jean Tremblay" class="testimonial-img">
-            <p>« Un programme complet, humain et professionnel. Merci au SITO pour cette opportunité. »</p>
-            <div class="testimonial-name">Jean Tremblay</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sophie Lefebvre" class="testimonial-img">
-            <p>« J’ai appris à croire en moi. Chaque atelier m’a aidé à mieux me connaître. »</p>
-            <div class="testimonial-name">Sophie Lefebvre</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Ahmed Khan" class="testimonial-img">
-            <p>« L’équipe pédagogique était exceptionnelle. Toujours à l’écoute et motivante. »</p>
-            <div class="testimonial-name">Ahmed Khan</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Camille Roy" class="testimonial-img">
-            <p>« Une expérience intense mais enrichissante. Je recommande à 100%. »</p>
-            <div class="testimonial-name">Camille Roy</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="David Gagnon" class="testimonial-img">
-            <p>« J’ai trouvé un emploi grâce à ce programme. Un grand merci à tous. »</p>
-            <div class="testimonial-name">David Gagnon</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/women/39.jpg" alt="Émilie Caron" class="testimonial-img">
-            <p>« Le soutien personnalisé a fait toute la différence. »</p>
-            <div class="testimonial-name">Émilie Caron</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/men/29.jpg" alt="Lucas Martin" class="testimonial-img">
-            <p>« Une belle cohésion de groupe. On s’est soutenus du début à la fin. »</p>
-            <div class="testimonial-name">Lucas Martin</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Fatima Ndiaye" class="testimonial-img">
-            <p>« Je suis fier d’être diplômé du PFPE Groupe 102. »</p>
-            <div class="testimonial-name">Fatima Ndiaye</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Patrick Leblanc" class="testimonial-img">
-            <p>« Des outils concrets pour réussir. Je me sens armé pour l’avenir. »</p>
-            <div class="testimonial-name">Patrick Leblanc</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/women/51.jpg" alt="Nadia Bouchard" class="testimonial-img">
-            <p>« Une belle opportunité de rebondir après une période difficile. »</p>
-            <div class="testimonial-name">Nadia Bouchard</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Samir Ahmed" class="testimonial-img">
-            <p>« L’accompagnement a été humain et professionnel. Merci. »</p>
-            <div class="testimonial-name">Samir Ahmed</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Chloé Pelletier" class="testimonial-img">
-            <p>« Merci à toute l'équipe du SITO pour votre aide et votre soutien dans la mise en place et le développement de nos compétences pour meux s'integrer lors de nos stages avec perspectives d'emploi. Votre aide a été précieuse et nous sommes reconnaissant pour cette opportunité. »</p>
-            <div class="testimonial-name">Boris</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/men/48.jpg" alt="Yvan Dubuc" class="testimonial-img">
-            <p>« Sito, la touche exceptionnelle à l'emploi de chaque immigrant ! Merci. »</p>
-            <div class="testimonial-name">Koffi</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Lina Tran" class="testimonial-img">
-            <p>« Arrivée au SITO un peu découragée. Je repars plus motivée que jamais. Merci au groupe 102, j’ai désormais une nouvelle famille. Certains plus doux que d’autres et c’est ce mélange qui fait notre force. Merci à chacun de nous, Merci au SITO😘 »</p>
-            <div class="testimonial-name">Anita</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Maxime Côté" class="testimonial-img">
-            <p>« J’ai appris à valoriser mon parcours. Merci pour cette belle aventure. »</p>
-            <div class="testimonial-name">Maxime Côté</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Amina Diallo" class="testimonial-img">
-            <p>« Un programme qui transforme. Je suis reconnaissant. »</p>
-            <div class="testimonial-name">Amina Diallo</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/men/40.jpg" alt="Olivier Gauthier" class="testimonial-img">
-            <p>« Une expérience collective puissante. Je garderai ces souvenirs précieusement. »</p>
-            <div class="testimonial-name">Olivier Gauthier</div>
-          </div>
-          <div class="swiper-slide">
-            <img src="https://randomuser.me/api/portraits/women/61.jpg" alt="Manon Fortin" class="testimonial-img">
-            <p>« Merci à tous ceux qui ont cru en nous. Nous sommes prêts! »</p>
-            <div class="testimonial-name">Manon Fortin</div>
-          </div>
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+      <h2>Témoignages</h2>
+      <div class="testimonial-slider" id="testimonialSlider">
+        <!-- Testimonials will be inserted by JS -->
+      </div>
+      <div class="dots-container" id="testimonialDots"></div>
+    </div>
+  </section>
+
+  <!-- Remerciements - Partenaires -->
+  <section class="partners">
+    <div class="container">
+      <h2>Merci aux partenaires du SITO</h2>
+      <div class="partners-grid">
+        <a href="https://www.csspo.gouv.qc.ca/" target="_blank" aria-label="Centre de services scolaire des Portages-de-l’Outaouais">
+          <img src="https://www.csspo.gouv.qc.ca/wp-content/uploads/2020/11/logo-csspo.png" alt="Centre de services scolaire des Portages-de-l’Outaouais" class="partner-logo" />
+        </a>
+        <a href="https://www.quebec.ca/" target="_blank" aria-label="Services Québec">
+          <img src="https://www.quebec.ca/images/gouv/logo-gouv-quebec.svg" alt="Services Québec" class="partner-logo" />
+        </a>
+        <a href="https://emplois.gouv.qc.ca/" target="_blank" aria-label="Emploi Québec">
+          <img src="https://emplois.gouv.qc.ca/wp-content/themes/emplois-gouv-qc/images/logo-emplois.svg" alt="Emploi Québec" class="partner-logo" />
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Formation -->
-  <section id="formation">
+  <!-- Participants -->
+  <section class="participants">
     <div class="container">
-      <h2>Formation & Moments Clés</h2>
-      <div class="moments">
-        <!-- Ateliers pratiques -->
-        <div class="moment">
-          <h3>Ateliers pratiques</h3>
-          <p>Simulation d’entrevues, rédaction de CV, développement de compétences.</p>
-          <div class="mini-swiper">
-            <div class="swiper mySwiper1">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="https://source.unsplash.com/random/600x400/?workshop,interview" alt="Simulation d'entrevue"></div>
-                <div class="swiper-slide"><img src="https://source.unsplash.com/random/600x400/?resume,job" alt="Rédaction de CV"></div>
-              </div>
-            </div>
-          </div>
+      <h2>Nos origines</h2>
+      <div class="participants-grid">
+        <div class="participant-country">
+          <img src="https://flagcdn.com/w20/cm.png" alt="Drapeau du Cameroun" class="participant-flag" />
+          <span>Cameroun</span>
         </div>
-
-        <!-- Coaching -->
-        <div class="moment">
-          <h3>Accompagnement personnalisé</h3>
-          <p>Suivi individuel avec des conseillers expérimentés.</p>
-          <div class="mini-swiper">
-            <div class="swiper mySwiper2">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="https://source.unsplash.com/random/600x400/?coach,meeting" alt="Séance de coaching"></div>
-                <div class="swiper-slide"><img src="https://source.unsplash.com/random/600x400/?mentor,advice" alt="Conseil personnalisé"></div>
-              </div>
-            </div>
-          </div>
+        <div class="participant-country">
+          <img src="https://flagcdn.com/w20/eg.png" alt="Drapeau de l'Égypte" class="participant-flag" />
+          <span>Égypte</span>
         </div>
-
-        <!-- Réseau -->
-        <div class="moment">
-          <h3>Sortie de groupe</h3>
-          <p>Bâtir des liens solides entre les participants.</p>
-          <div class="mini-swiper">
-            <div class="swiper mySwiper3">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="https://source.unsplash.com/random/600x400/?networking,outdoor" alt="Sortie en plein air"></div>
-                <div class="swiper-slide"><img src="https://source.unsplash.com/random/600x400/?team,bonding" alt="Renforcement d'équipe"></div>
-              </div>
-            </div>
-          </div>
+        <div class="participant-country">
+          <img src="https://flagcdn.com/w20/tg.png" alt="Drapeau du Togo" class="participant-flag" />
+          <span>Togo</span>
+        </div>
+        <div class="participant-country">
+          <img src="https://flagcdn.com/w20/ma.png" alt="Drapeau du Maroc" class="participant-flag" />
+          <span>Maroc</span>
+        </div>
+        <div class="participant-country">
+          <img src="https://flagcdn.com/w20/ci.png" alt="Drapeau de la Côte d’Ivoire" class="participant-flag" />
+          <span>Côte d’Ivoire</span>
+        </div>
+        <div class="participant-country">
+          <img src="https://flagcdn.com/w20/ht.png" alt="Drapeau d'Haïti" class="participant-flag" />
+          <span>Haïti</span>
+        </div>
+        <div class="participant-country">
+          <img src="https://flagcdn.com/w20/bj.png" alt="Drapeau du Bénin" class="participant-flag" />
+          <span>Bénin</span>
+        </div>
+        <div class="participant-country">
+          <img src="https://flagcdn.com/w20/cd.png" alt="Drapeau de la RDC" class="participant-flag" />
+          <span>R. D. Congo</span>
         </div>
       </div>
+      <p class="total-count">19 participants formés avec succès vont en stage avec perspective d'emploi</p>
     </div>
   </section>
 
-  <!-- Pied de page -->
+  <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-content">
-        <p>Un grand merci à chaque membre du Groupe 102 pour leur engagement, leur courage et leur détermination.</p>
-        <div class="social-links">
-          <a href="#" aria-label="Facebook">📘</a>
-          <a href="#" aria-label="Instagram">📷</a>
-          <a href="#" aria-label="LinkedIn">💼</a>
-        </div>
+    <div class="footer-content">
+      <p class="credits">Réalisé par les participants du PFPE — SITO (groupe 102)</p>
+      <div class="footer-links">
+        <a href="mailto:inno23sado@gmail.com">Contact</a>
+        <a href="https://sito.qc.ca/" target="_blank">Site officiel SITO</a>
+        <a href="#mentions">Mentions légales</a>
       </div>
-      <div class="credits">
-        <p>© 2025 PFPE Groupe 102 | Conçu avec ❤️ par le SITO Gatineau</p>
-        <p>Contact : <a href="mailto:info@sito-gatineau.qc.ca" style="color:#aaa;">info@sito-gatineau.qc.ca</a></p>
-      </div>
+      <p class="credits">© 2025 — Tout droit reservé PFPE 102, SITO</p>
     </div>
   </footer>
 
-  <!-- Swiper.js JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- Modal -->
+  <div class="modal" id="testimonialModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
 
-  <!-- JavaScript personnalisé -->
   <script>
-    // Carrousel principal
-    new Swiper('.swiper', {
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      breakpoints: {
-        640: {
-          slidesPerView: 1,
-        },
-        768: {
-          slidesPerView: 2,
-        },
-        1024: {
-          slidesPerView: 3,
+    // Slideshow for Moments Forts
+    const slideshowData = [
+  { img: '/img/1.jpeg', caption: '' },
+  { img: '/img/2.jpeg', caption: '' },
+  { img: '/img/3.jpeg', caption: '' },
+  { img: '/img/4.jpeg', caption: '' },
+  { img: '/img/5.jpeg', caption: '' },
+  { img: '/img/6.jpeg', caption: '' },
+  { img: '/img/7.jpeg', caption: '' },
+  { img: '/img/8.jpeg', caption: '' }
+];
+
+    const testimonialData = [
+      { name: 'Anita', country: 'Cameroun', flagCode: 'cm', text: 'Arrivée au SITO un peu découragée. Je repars plus motivée que jamais. Merci au groupe 102, j’ai désormais une nouvelle famille. Certains plus doux que d’autres et c’est ce mélange qui fait notre force. Merci à chacun de nous, Merci au SITO😘' },
+      { name: 'Moustapha', country: 'Maroc', flagCode: 'ma', text: 'Le programme PFPE est un tremplin essentiel pour les nouveaux arrivants. Les formateurs sont à l\'écoute et très professionnels.' },
+      { name: 'Getro', country: 'Haïti', flagCode: 'ht', text: 'J\'ai découvert des outils précieux pour la recherche d\'emploi. Je me sens maintenant prête à affronter le marché du travail québécois.' },
+      { name: 'Neamat', country: 'Égypte', flagCode: 'eg', text: 'L\'accompagnement personnalisé a fait toute la différence. On ne se sent jamais seul dans ce parcours.' },
+      { name: 'Romaric', country: 'Bénin', flagCode: 'bj', text: 'Merci à SITO pour cette opportunité. J\'ai pu développer mon réseau professionnel et mieux comprendre la culture du travail ici.' },
+      { name: 'Boris', country: 'Cameroun', flagCode: 'cm', text: 'Un immense merci à toute l’équipe du SITO pour votre accompagnement bienveillant, votre écoute et votre engagement à nos côtés. Grâce à vous, nous avons pu développer nos compétences avec confiance, nous projeter plus sereinement dans nos stages, et entrevoir de vraies perspectives d’avenir. Votre soutien a été bien plus qu’une simple aide : il a été un moteur, une lumière sur notre chemin. Nous vous sommes profondément reconnaissants pour cette belle aventure humaine et professionnelle. Le SITO restera pour nous une structure de cœur.' },
+      { name: 'Jocelyn', country: 'Côte d’Ivoire', flagCode: 'ci', text: 'Un grand merci aux formateurs pour leur patience et leur professionnalisme. Cette expérience a changé ma trajectoire.' },
+      { name: 'Jean Paul', country: 'Cameroun', flagCode: 'cm', text: 'Le programme m\'a aidé à mieux comprendre les attentes des employeurs au Québec. Je recommande vivement SITO.' },
+      { name: 'Koffi', country: 'Togo', flagCode: 'tg', text: 'J\'ai apprécié l\'approche humaine et inclusive. Chaque participant est valorisé pour ce qu\'il apporte.' },
+      { name: 'Carel', country: 'Cameroun', flagCode: 'cm', text: 'Un programme complet qui couvre tous les aspects de l\'insertion professionnelle. Merci à toute l\'équipe.' },
+      { name: 'Henri', country: 'Cameroun', flagCode: 'cm', text: 'Grâce à cette formation, j\'ai décroché mon premier emploi au Québec. Un immense merci à SITO et aux partenaires.' },
+      { name: 'Joseph', country: 'Cameroun', flagCode: 'cm', text: 'C\'est avec une très grande satisfaction, que je  viens presenter ma reconnaissance à toute l\'équipe du sito, pour les orientations qu’ils  nous ont offertes dans ce programme PFPE.' },
+      { name: 'Saint-Claire', country: 'Cameroun', flagCode: 'cm', text: 'J\'ai appris à mieux me présenter et à valoriser mon expérience internationale. Un grand pas en avant.' },
+      { name: 'Joel', country: 'Cameroun', flagCode: 'cm', text: '6 semaines de pur bonheur. Beaucoup d’enseignements, je repars plus positif. Merci pour ces moments de joie avec chacun des membres du groupe 102, merci au SITO pour cette opportunité d’emploi que vous nous avez accordé.' },
+      { name: 'Innocent', country: 'Cameroun', flagCode: 'cm', text: 'Un grand merci pour l\'accompagnement chaleureux et professionnel. Cette formation a été une véritable renaissance.' },
+      { name: 'Mathieu', country: 'Cameroun', flagCode: 'cm', text: 'J\'ai pu améliorer mes compétences en français professionnel et mieux comprendre les codes du milieu de travail québécois.' },
+      { name: 'Zed', country: 'Republique Democratique du Congo', flagCode: 'cd', text: 'Le programme est bien structuré et les formateurs sont très compétents. Je me sens prête à relever de nouveaux défis.' },
+      { name: 'Judith', country: 'Cameroun', flagCode: 'cm', text: 'Mes remerciements pour l’accompagnement et le soutien que j’ai reçus de la part du SITO dans le cadre de mon intégration professionnelle. Votre disponibilité, vos conseils avisés et votre engagement à m’aider à franchir les étapes vers le monde du travail ici au Canada 🇨🇦 ont été d’une aide précieuse. Grâce à votre appui, j’ai pu renforcer ma confiance en moi, affiner mon projet professionnel et progresser vers mes objectifs. Merci pour votre professionnalisme, votre bienveillance et l’attention portée à mon parcours.' },
+      { name: 'Daina', country: 'Cameroun', flagCode: 'cm', text: 'Cette formation m\'a permis de mieux comprendre le marché du travail québécois et de développer un plan d\'action clair pour mon avenir professionnel.' }
+    ];
+
+    // Initialize Slideshow
+    function initSlideshow() {
+      const container = document.getElementById('slideshow');
+      const dotsContainer = document.getElementById('dots');
+      
+      slideshowData.forEach((slide, index) => {
+        const slideEl = document.createElement('div');
+        slideEl.className = index === 0 ? 'slide active' : 'slide';
+        slideEl.style.backgroundImage = `url('${slide.img}')`;
+        slideEl.innerHTML = `<div class="slide-caption">${slide.caption}</div>`;
+        container.appendChild(slideEl);
+
+        const dot = document.createElement('div');
+        dot.className = index === 0 ? 'dot active' : 'dot';
+        dot.setAttribute('data-index', index);
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+      });
+
+      // Controls
+      const prevBtn = document.createElement('button');
+      prevBtn.innerHTML = '&#10094;';
+      prevBtn.className = 'control-btn';
+      prevBtn.addEventListener('click', prevSlide);
+      container.appendChild(prevBtn);
+
+      const nextBtn = document.createElement('button');
+      nextBtn.innerHTML = '&#10095;';
+      nextBtn.className = 'control-btn';
+      nextBtn.addEventListener('click', nextSlide);
+      container.appendChild(nextBtn);
+
+      // Auto-play
+      let slideInterval = setInterval(nextSlide, 5000);
+      
+      // Pause on hover
+      container.addEventListener('mouseenter', () => clearInterval(slideInterval));
+      container.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(nextSlide, 5000);
+      });
+
+      // Touch events for swipe
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      container.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      container.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchEndX < touchStartX - 50) {
+          nextSlide();
         }
+        if (touchEndX > touchStartX + 50) {
+          prevSlide();
+        }
+      }, { passive: true });
+    }
+
+    let currentSlide = 0;
+
+    function nextSlide() {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    function prevSlide() {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    function goToSlide(index) {
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      slides[currentSlide].classList.remove('active');
+      dots[currentSlide].classList.remove('active');
+      currentSlide = index;
+      slides[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+
+    // Initialize Testimonials
+    function initTestimonials() {
+      const slider = document.getElementById('testimonialSlider');
+      const dotsContainer = document.getElementById('testimonialDots');
+      
+      testimonialData.forEach((testimonial, index) => {
+        const item = document.createElement('div');
+        item.className = index === 0 ? 'testimonial-item active' : 'testimonial-item';
+        item.innerHTML = `
+          <img src="https://placehold.co/150x150/4169E1/white?text=${testimonial.name}" alt="Portrait de ${testimonial.name}" class="testimonial-img" />
+          <div class="testimonial-name">
+            <img src="https://flagcdn.com/w20/${testimonial.flagCode}.png" alt="Drapeau de ${testimonial.country}" class="country-flag" />
+            ${testimonial.name}
+          </div>
+          <p class="testimonial-text">${testimonial.text.substring(0, 120)}...</p>
+          <span class="testimonial-modal-btn" data-index="${index}">Lire tout le témoignage</span>
+        `;
+        slider.appendChild(item);
+
+        const dot = document.createElement('div');
+        dot.className = index === 0 ? 'dot active' : 'dot';
+        dot.setAttribute('data-index', index);
+        dot.addEventListener('click', () => goToTestimonial(index));
+        dotsContainer.appendChild(dot);
+      });
+
+      // Add event listeners for modal buttons
+      document.querySelectorAll('.testimonial-modal-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const index = e.target.getAttribute('data-index');
+          openTestimonialModal(index);
+        });
+      });
+
+      // Auto-cycle testimonials
+      let testimonialInterval = setInterval(nextTestimonial, 6000);
+      
+      // Pause on hover
+      slider.addEventListener('mouseenter', () => clearInterval(testimonialInterval));
+      slider.addEventListener('mouseleave', () => {
+        testimonialInterval = setInterval(nextTestimonial, 6000);
+      });
+    }
+
+    let currentTestimonial = 0;
+
+    function nextTestimonial() {
+      const items = document.querySelectorAll('.testimonial-item');
+      const dots = document.querySelectorAll('#testimonialDots .dot');
+      items[currentTestimonial].classList.remove('active');
+      dots[currentTestimonial].classList.remove('active');
+      currentTestimonial = (currentTestimonial + 1) % items.length;
+      items[currentTestimonial].classList.add('active');
+      dots[currentTestimonial].classList.add('active');
+    }
+
+    function goToTestimonial(index) {
+      const items = document.querySelectorAll('.testimonial-item');
+      const dots = document.querySelectorAll('#testimonialDots .dot');
+      items[currentTestimonial].classList.remove('active');
+      dots[currentTestimonial].classList.remove('active');
+      currentTestimonial = index;
+      items[currentTestimonial].classList.add('active');
+      dots[currentTestimonial].classList.add('active');
+    }
+
+    // Modal functionality
+    function openTestimonialModal(index) {
+      const testimonial = testimonialData[index];
+      const modal = document.getElementById('testimonialModal');
+      const modalBody = document.getElementById('modalBody');
+      
+      modalBody.innerHTML = `
+        <img src="https://flagcdn.com/w20/${testimonial.flagCode}.png" alt="Drapeau de ${testimonial.country}" class="country-flag" style="width: 30px; height: 20px; margin-right: 10px;" />
+        <h3 style="display: inline;">${testimonial.name}, ${testimonial.country}</h3>
+        <p style="margin-top: 20px; line-height: 1.8; font-size: 1.1rem;">${testimonial.text}</p>
+      `;
+      
+      modal.classList.add('active');
+    }
+
+    document.getElementById('modalClose').addEventListener('click', () => {
+      document.getElementById('testimonialModal').classList.remove('active');
+    });
+
+    document.getElementById('testimonialModal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        e.currentTarget.classList.remove('active');
       }
     });
 
-    // Carrousels imbriqués
-    new Swiper('.mySwiper1', {
-      loop: true,
-      autoplay: { delay: 3000 },
-      pagination: { el: '.mySwiper1 .swiper-pagination', clickable: true },
-      navigation: false,
-    });
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      initSlideshow();
+      initTestimonials();
 
-    new Swiper('.mySwiper2', {
-      loop: true,
-      autoplay: { delay: 3500 },
-      pagination: { el: '.mySwiper2 .swiper-pagination', clickable: true },
-      navigation: false,
-    });
-
-    new Swiper('.mySwiper3', {
-      loop: true,
-      autoplay: { delay: 4000 },
-      pagination: { el: '.mySwiper3 .swiper-pagination', clickable: true },
-      navigation: false,
-    });
-
-    // Navigation fluide
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        window.scrollTo({
-          top: targetElement.offsetTop - 80,
-          behavior: 'smooth'
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop,
+              behavior: 'smooth'
+            });
+          }
         });
       });
     });
-
-    // Effet de transparence sur la nav
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('nav');
-      if (window.scrollY > 100) {
-        nav.style.backgroundColor = '#1a3b5d';
-      } else {
-        nav.style.backgroundColor = 'rgba(26, 59, 93, 0.95)';
-      }
-    });
   </script>
-
 </body>
 </html>
