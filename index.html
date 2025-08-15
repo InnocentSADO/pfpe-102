@@ -622,9 +622,9 @@
 
   <script>
     // Slideshow for Moments Forts
-    /*const slideshowData = [
+    const slideshowData = [
   { img: '/img/family.gif', caption: '' }
-];*/
+];
 
     const testimonialData = [
       { name: 'Anita', country: 'Cameroun', flagCode: 'cm', text: 'Arrivée au SITO un peu découragée. Je repars plus motivée que jamais. Merci au groupe 102, j’ai désormais une nouvelle famille. Certains plus doux que d’autres et c’est ce mélange qui fait notre force. Merci à chacun de nous, Merci au SITO😘' },
@@ -653,7 +653,7 @@
       const container = document.getElementById('slideshow');
       const dotsContainer = document.getElementById('dots');
       
-      /*slideshowData.forEach((slide, index) => {
+      slideshowData.forEach((slide, index) => {
         const slideEl = document.createElement('div');
         slideEl.className = index === 0 ? 'slide active' : 'slide';
         slideEl.style.backgroundImage = `url('${slide.img}')`;
@@ -665,11 +665,10 @@
         dot.setAttribute('data-index', index);
         dot.addEventListener('click', () => goToSlide(index));
         dotsContainer.appendChild(dot);
-      });*/
+      });
 
       // Controls
-      
-      /*const prevBtn = document.createElement('button');
+      const prevBtn = document.createElement('button');
       prevBtn.innerHTML = '&#10094;';
       prevBtn.className = 'control-btn';
       prevBtn.addEventListener('click', prevSlide);
@@ -679,7 +678,7 @@
       nextBtn.innerHTML = '&#10095;';
       nextBtn.className = 'control-btn';
       nextBtn.addEventListener('click', nextSlide);
-      container.appendChild(nextBtn);*/
+      container.appendChild(nextBtn);
 
       // Auto-play
       let slideInterval = setInterval(nextSlide, 5000);
